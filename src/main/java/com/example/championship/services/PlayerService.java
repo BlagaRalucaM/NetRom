@@ -3,6 +3,7 @@ package com.example.championship.services;
 import com.example.championship.models.Player;
 import com.example.championship.repositories.PlayerRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,26 +12,36 @@ import java.util.List;
 @Service
 public class PlayerService {
 
+
+    @Autowired
     private final PlayerRepository playerRepository;
 
-    public List<Player> findAll(){
+    public List<Player> findAll() {
         return playerRepository.findAll();
     }
 
     public Player findPlayerById(Long id) {
-        Player test = playerRepository.findPlayerById(id);
+        Player player = playerRepository.findPlayerById(id);
         return playerRepository.findPlayerById(id);
     }
 
-    public Player savePlayer(Player newPlayer){
+    public Player savePlayer(Player newPlayer) {
         return playerRepository.save(newPlayer);
     }
 
-    public void deletePlayerById(Long id){
+    public void deletePlayerById(Long id) {
         playerRepository.deleteById(id);
     }
 
-    public Player replacePlayer(Player newPlayer){
-        return playerRepository.save(newPlayer);
+    public Player replacePlayer(Long id, Player newPlayer) throws Exception {
+        if (newPlayer != null) {
+            Player replacePlayer = playerRepository.findPlayerById(id);
+            if (replacePlayer != null) {
+                replacePlayer.setName(newPlayer.getName());
+                replacePlayer.setSurname(newPlayer.getSurname());
+                return playerRepository.save(newPlayer);
+            } else throw new Exception("Player noy found");
+        }
+        throw new Exception("New Player not found");
     }
 }

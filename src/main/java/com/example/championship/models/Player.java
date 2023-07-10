@@ -1,5 +1,6 @@
 package com.example.championship.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,6 +26,11 @@ public class Player {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "id_team")
-    private long idTeam;
+//    @Column(name = "id_team")
+//    private long idTeam;
+
+
+    @ManyToOne
+    @JoinColumn(name = "id_team", referencedColumnName = "ID")
+    private Team team;
 }
