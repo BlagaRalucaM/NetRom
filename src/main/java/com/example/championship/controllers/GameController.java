@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/game")
 @AllArgsConstructor
@@ -15,6 +17,11 @@ public class GameController {
 
     @Autowired
     private final GameService gameService;
+
+    @GetMapping("/allGames")
+    public List<Game> getAllGames(){
+        return gameService.getAllGames();
+    }
 
     @GetMapping("/{id}")
     public Game findGameById(@PathVariable Long id) {

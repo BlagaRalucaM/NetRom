@@ -26,10 +26,6 @@ public class Player {
     @Column(name = "surname")
     private String surname;
 
-//    @Column(name = "id_team")
-//    private long idTeam;
-
-
     @ManyToOne
     @JoinColumn(name = "id_team", referencedColumnName = "ID")
     private Team team;

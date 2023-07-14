@@ -4,6 +4,7 @@ import com.example.championship.models.Player;
 import com.example.championship.repositories.PlayerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class PlayerService {
     @Autowired
     private final PlayerRepository playerRepository;
 
-    public List<Player> findAll() {
+    public List<Player> getAllPlayers() {
         return playerRepository.findAll();
     }
 
@@ -44,4 +45,9 @@ public class PlayerService {
         }
         throw new Exception("New Player not found");
     }
+
+    public List<Player> sortPlayersByName() {
+        return playerRepository.findAll(Sort.by("name"));
+    }
+
 }

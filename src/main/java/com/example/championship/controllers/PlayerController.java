@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/player")
 @AllArgsConstructor
@@ -15,6 +17,11 @@ public class PlayerController {
 
     @Autowired
     private final PlayerService playerService;
+
+    @GetMapping("/allPlayers")
+    public List<Player> getAllPlayers() {
+        return playerService.getAllPlayers();
+    }
 
     @GetMapping("/{id}")
     public Player findPlayerById(@PathVariable Long id) {
@@ -36,5 +43,10 @@ public class PlayerController {
     @PutMapping("/update/{id}")
     public Player replacePlayer(@PathVariable Long id,@RequestBody Player newPlayer) throws Exception {
         return playerService.replacePlayer(id,newPlayer);
+    }
+
+    @GetMapping("/byName")
+    public List<Player> sortPlayersByName() {
+        return playerService.sortPlayersByName();
     }
 }

@@ -46,4 +46,7 @@ public class TeamService {
         return teamRepository.findByOrderByNameAsc();
     }
 
+    public List<Team> getAllTeams() {
+        return teamRepository.findAll();
+    }
 }

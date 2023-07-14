@@ -13,6 +13,11 @@ import java.util.List;
 public class TeamController {
 
     private final TeamService teamService;
+
+    @GetMapping("/allTeams")
+    public List<Team> getAllTeams() {
+        return teamService.getAllTeams();
+    }
     @GetMapping("/findTeam/{id}")
     public Team findTeamById(@PathVariable Long id) {
 

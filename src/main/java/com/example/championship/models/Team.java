@@ -23,14 +23,14 @@ public class Team {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Player> players = new ArrayList<>();
 
-    @OneToMany(mappedBy = "team1", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "team1", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Game> team1Games;
 
 
-    @OneToMany(mappedBy = "team2", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "team2", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Game> team2Games;
 }
