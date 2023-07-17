@@ -29,18 +29,18 @@ public class GameController {
         return gameService.findGameById(id);
     }
 
-    @PostMapping()
+    @PostMapping("/saveGame")
     public Game saveGame(@RequestBody Game newGame){
 
         return gameService.saveGame(newGame);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteGame/{id}")
     public void deleteGameById(@PathVariable Long id) {
         gameService.deleteGameById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public Game replaceGame(@PathVariable Long id,@RequestBody Game newGame) {
         Game replaceGame = gameService.findGameById(id);
 
