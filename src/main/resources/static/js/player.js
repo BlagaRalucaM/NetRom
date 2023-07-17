@@ -61,10 +61,6 @@ function deletePlayer(id){
 }
 
 function createPlayer() {
-// Define the data we want to send
-//    const data = {
-//     document.getElementById('form1').submit();
-//    };
     var data = {
         name: $("#playerName")[0].value,
         type: $("#playerSurname")[0].value

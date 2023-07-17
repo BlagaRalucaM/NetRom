@@ -4,13 +4,6 @@ function makeTable(container, data) {
     table.append(tableHeader);
 
     var deleteHome = document.createElement("button");
-//    deleteHome = "<button class="btn btn-delete">
-//                    <span class="mdi mdi-delete mdi-24px"></span>
-//                    <span class="mdi mdi-delete-empty mdi-24px"></span>
-//                    <span>Delete</span>
-//                  </button>"
-//    deleteHome.setAttribute(‘id’, ‘delete-btn’);
-//    deleteHome.innerText = "Delete";
 
 table.append("<tbody>")
     $.each(data, function(rowIndex, r) {
@@ -26,10 +19,6 @@ table.append("<tbody>")
 }
 
 function createTeam() {
-// Define the data we want to send
-//    const data = {
-//     document.getElementById('form1').submit();
-//    };
     var data = {
         name: $("#teamName")[0].value,
         type: $("#teamType")[0].value
@@ -67,7 +56,6 @@ function deleteTeam(id){
         });
       };
 }
-
 
 
 function getTeams(){
