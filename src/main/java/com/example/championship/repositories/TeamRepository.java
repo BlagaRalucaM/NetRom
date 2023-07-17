@@ -11,4 +11,5 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
 
     Team findTeamById(Long id);
     List<Team> findByOrderByNameAsc();
+    List<Team> findByOrderByIdAsc();
 }

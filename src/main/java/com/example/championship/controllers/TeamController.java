@@ -43,4 +43,9 @@ public class TeamController {
     public List<Team> sortTeamByName(){
         return teamService.sortTeamByName();
     }
+
+    @GetMapping("/byId")
+    public List<Team> sortTeamById(){
+        return teamService.sortTeamById();
+    }
 }

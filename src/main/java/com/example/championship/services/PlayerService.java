@@ -1,6 +1,7 @@
 package com.example.championship.services;
 
 import com.example.championship.models.Player;
+import com.example.championship.models.Team;
 import com.example.championship.repositories.PlayerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,10 @@ public class PlayerService {
 
     public List<Player> sortPlayersByName() {
         return playerRepository.findAll(Sort.by("name"));
+    }
+
+    public List<Player> sortPlayerById(){
+        return playerRepository.findByOrderByIdAsc();
     }
 
 }

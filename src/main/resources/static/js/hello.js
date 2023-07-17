@@ -1,6 +1,6 @@
 function makeTable(container, data) {
-    var table = $("<table />").addClass('table');
-    var tableHeader= "<tr><th>ID</th><th>Name</th><th>Type</th><th>Actions</th></tr>";
+    var table = $("<table id ='teamsTable' />").addClass('table');
+    var tableHeader= " <thead> <tr><th>ID</th><th>Name</th><th>Type</th><th>Actions</th></tr> </thead>";
     table.append(tableHeader);
 
     var deleteHome = document.createElement("button");
@@ -12,6 +12,7 @@ function makeTable(container, data) {
 //    deleteHome.setAttribute(‘id’, ‘delete-btn’);
 //    deleteHome.innerText = "Delete";
 
+table.append("<tbody>")
     $.each(data, function(rowIndex, r) {
         var row = $("<tr/>");
         row.append("<td>" + r.id + "</td>");
@@ -20,7 +21,31 @@ function makeTable(container, data) {
         row.append("<td> <button onclick = 'deleteTeam("+r.id+")' class='btn btn-delete'> Delete </button> </td>");
         table.append(row);
     });
-    return container.append(table);
+    table.append("</tbody>")
+    container.append(table);
+}
+
+function createTeam() {
+// Define the data we want to send
+//    const data = {
+//     document.getElementById('form1').submit();
+//    };
+    var data = {
+        name: $("#teamName")[0].value,
+        type: $("#teamType")[0].value
+    }
+      $.ajax({
+        url: "http://localhost:8080/team/saveTeam" ,
+        type: 'POST',
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function(response){
+            window.location.reload();
+        },
+        error: function(){
+                alert(data)
+        }
+        });
 }
 
 function deleteTeam(id){
@@ -53,6 +78,9 @@ function getTeams(){
             success: function(res) {
                 data = res;
                 var cityTable = makeTable($(document.body), data);
+                             $('#teamsTable').DataTable({
+                                     paging: true,
+                                     sorting: true})
             }
         });
 }

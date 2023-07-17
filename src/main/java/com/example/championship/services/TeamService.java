@@ -45,6 +45,9 @@ public class TeamService {
     public List<Team> sortTeamByName(){
         return teamRepository.findByOrderByNameAsc();
     }
+    public List<Team> sortTeamById(){
+        return teamRepository.findByOrderByIdAsc();
+    }
 
     public List<Team> getAllTeams() {
         return teamRepository.findAll();
