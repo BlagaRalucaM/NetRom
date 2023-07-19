@@ -9,10 +9,10 @@ function makeTable(container, data) {
         $.each(data, function(rowIndex, r) {
                 var row = $("<tr/>");
                 row.append("<td>" + r.id + "</td>");
-                row.append("<td>" + r.GameType + "</td>");
-                row.append("<td>" + r.Score1 + "</td>");
-                row.append("<td>" + r.Score2 + "</td>");
-                row.append("<td> <button onclick = 'deleteGame("+r.id+")' class='btn btn-delete'> Delete </button> </td>");
+                row.append("<td>" + r.gameType + "</td>");
+                row.append("<td>" + r.score1 + "</td>");
+                row.append("<td>" + r.score2 + "</td>");
+                row.append("<td> <button onclick = 'deleteGame("+r.id+")' class='btn btn-primary'> Delete </button> </td>");
                 table.append(row);
             });
             table.append("</tbody>")
@@ -26,7 +26,7 @@ function getGames(){
             dataType: 'json',
             success: function(res) {
                 data = res;
-                var table = makeTable($(document.body), data);
+                var table = makeTable($("#gamesDiv"), data);
                  $('#gamesTable').DataTable({
                                      paging: true,
                                      sorting: true
@@ -49,9 +49,10 @@ function deleteGame(id){
     if (confirmalert == true) {
       // AJAX Request"
       $.ajax({
-        url: "http://localhost:8080/game/deleteGame" + id ,
+        url: "http://localhost:8080/game/deleteGame/" + id ,
         type: 'DELETE',
         success: function(response){
+           window.location.reload();
         }
         });
       };
@@ -59,9 +60,9 @@ function deleteGame(id){
 
 function createGame() {
     var data = {
-        name: $("#gameType")[0].value,
-        type: $("#score1")[0].value
-        type: $("#score2")[0].value
+        gameType: $("#gameType")[0].value,
+        score1: $("#score1")[0].value,
+        score2: $("#score2")[0].value
     }
       $.ajax({
         url: "http://localhost:8080/game/saveGame" ,

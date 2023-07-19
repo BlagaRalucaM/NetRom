@@ -6,21 +6,24 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Games</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="/js/player.js"></script>
+  <script src="/js/game.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
 </head>
 <body>
-<legend>Add new player</legend>
+<div id="gamesDiv"> </div>
+<div style="padding-left: 100px">
+        <legend>Add new game</legend>
 
-<input type="text" id="gameType" name="gameType" placeholder="Game Type"><br /><br />
-<input type="text" id="score1" name="score1" placeholder="Score1"><br /><br />
-<input type="text" id="score2" name="score2" placeholder="Score2"><br /><br />
+        <input type="text" id="gameType" name="gameType" placeholder="Game Type"><br /><br />
+        <input type="text" id="score1" name="score1" placeholder="Score1"><br /><br />
+        <input type="text" id="score2" name="score2" placeholder="Score2"><br /><br />
 
-
-<button type="submit" onclick="createPlayer()">Submit</button>
+        <button type="button" class="btn btn-success" onclick="createGame()" style>Submit</button>
+</div>
 </body>
 </html>

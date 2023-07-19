@@ -16,13 +16,14 @@
 </head>
 <body>
 
-<legend>Add new player</legend>
+<div id="playersDiv"> </div>
+<div style="padding-left: 100px">
+        <legend>Add new player</legend>
 
-<input type="text" id="playerName" name="name" placeholder="Player name"><br /><br />
-<input type="text" id="playerSurname" name="surname" placeholder="Surname"><br /><br />
+        <input type="text" id="playerName" name="name" placeholder="Player name"><br /><br />
+        <input type="text" id="playerSurname" name="surname" placeholder="Surname"><br /><br />
 
-
-<button type="submit" onclick="createPlayer()">Submit</button>
-
+        <button type="button" class="btn btn-success" onclick="createPlayer()" style>Submit</button>
+</div>
 </body>
 </html>

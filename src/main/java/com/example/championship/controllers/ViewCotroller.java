@@ -9,14 +9,19 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ViewCotroller {
 
-    @GetMapping("/home")
-    public String home() {
+    @GetMapping("/teams")
+    public String teams() {
         return "index";
     }
 
     @GetMapping("/players")
     public String players(){
         return "players";
+    }
+
+    @GetMapping("/games")
+    public String games(){
+        return "games";
     }
 
 }

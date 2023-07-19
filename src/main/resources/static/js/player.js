@@ -11,9 +11,10 @@ table.append("<tbody>")
             row.append("<td>" + r.id + "</td>");
             row.append("<td>" + r.name + "</td>");
             row.append("<td>" + r.surname + "</td>");
-            row.append("<td> <button onclick = 'deletePlayer("+r.id+")' class='btn btn-delete'> Delete </button> </td>");
+            row.append("<td> <button onclick = 'deletePlayer("+r.id+")' class='btn btn-primary'> Delete </button> </td>");
             table.append(row);
         });
+
         table.append("</tbody>")
          container.append(table);
 
@@ -26,7 +27,7 @@ function getPlayers(){
             dataType: 'json',
             success: function(res) {
                 data = res;
-                var table = makeTable($(document.body), data);
+                var table = makeTable($("#playersDiv"), data);
                  $('#playersTable').DataTable({
                                      paging: true,
                                      sorting: true
@@ -51,10 +52,10 @@ function deletePlayer(id){
     if (confirmalert == true) {
       // AJAX Request"
       $.ajax({
-        url: "http://localhost:8080/player/deletePlayer" + id ,
+        url: "http://localhost:8080/player/deletePlayer/" + id ,
         type: 'DELETE',
         success: function(response){
-//            getPlayers()
+              window.location.reload();
         }
         });
       };
@@ -63,7 +64,7 @@ function deletePlayer(id){
 function createPlayer() {
     var data = {
         name: $("#playerName")[0].value,
-        type: $("#playerSurname")[0].value
+        surname: $("#playerSurname")[0].value
     }
       $.ajax({
         url: "http://localhost:8080/player/savePlayer" ,

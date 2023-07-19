@@ -11,7 +11,7 @@ table.append("<tbody>")
         row.append("<td>" + r.id + "</td>");
         row.append("<td>" + r.name + "</td>");
         row.append("<td>" + r.type + "</td>");
-        row.append("<td> <button onclick = 'deleteTeam("+r.id+")' class='btn btn-delete'> Delete </button> </td>");
+        row.append("<td> <button onclick = 'deleteTeam("+r.id+")' class='btn btn-primary'> Delete </button> </td>");
         table.append(row);
     });
     table.append("</tbody>")
@@ -51,7 +51,7 @@ function deleteTeam(id){
         url: "http://localhost:8080/team/deleteTeam/" + id ,
         type: 'DELETE',
         success: function(response){
-//            getTeams()
+            window.location.reload();
         }
         });
       };
@@ -65,7 +65,7 @@ function getTeams(){
             dataType: 'json',
             success: function(res) {
                 data = res;
-                var cityTable = makeTable($(document.body), data);
+                var table = makeTable($("#teamsDiv"), data);
                              $('#teamsTable').DataTable({
                                      paging: true,
                                      sorting: true})
